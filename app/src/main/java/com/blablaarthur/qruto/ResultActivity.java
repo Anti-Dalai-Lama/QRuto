@@ -71,11 +71,13 @@ public class ResultActivity extends AppCompatActivity {
                     if (em != null) {
                         f5.setText("Email: " + em.address);
                     }
+                    button.setText("Add contact");
                     break;
                 case Barcode.SMS:
                     tw.setText("SMS");
                     f1.setText("Number: " + barcode.sms.phoneNumber);
                     f2.setText("Message: " + barcode.sms.message);
+                    button.setText("Send SMS");
                     break;
                 case Barcode.GEO:
                     tw.setText("GEO");
