@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
     SurfaceView cameraPreview;
     BarcodeDetector barcodeDetector;
     CameraSource camera;
-    boolean oneBarcode = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,15 +102,11 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     final SparseArray<Barcode> barcodes = detections.getDetectedItems();
                     if (barcodes.size() > 0) {
-                        oneBarcode = true;
-                    }
-                    if (oneBarcode) {
                         Intent intent = new Intent(MainActivity.this, ResultActivity.class);
                         Barcode bc = barcodes.valueAt(0);
                         intent.putExtra("barcode", bc);
                         startActivity(intent);
                         barcodeDetector.release();
-                        oneBarcode = false;
                     }
                 }
                 catch (Exception e){
